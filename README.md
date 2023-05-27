@@ -19,7 +19,7 @@ We also make available the DE-EN model that was used to produce the translations
 ### How to use our model?
 Our model is built on top of [*Fairseq*](https://github.com/facebookresearch/fairseq). We refer to their [repo folder on translation](https://github.com/facebookresearch/fairseq/blob/main/examples/translation) for additional information on how to preprocess, train and generate translations. 
 
-NOTE: To obtain model-based statistics that are faithful to the dataset we release, we advise to force decode the translations in the dataset using `fairseq-generate` with `score-reference` activated.
+NOTE: To obtain model-based statistics that are faithful to the dataset we release, we advise to force decode the translations in the dataset using `fairseq-generate` with `score-reference` activated. Make sure the preprocessed binarized dataset contains the translations as references.
 
 ### How to run MC-dropout on Fairseq models?
 Look [here](https://github.com/facebookresearch/fairseq/tree/main/examples/unsupervised_quality_estimation) to find instructions on how to run MC-dropout inference with Fairseq models. You will also find instructions on how to compute similarity between multiple hypotheses with METEOR, which you can use to compute `MC-DSim`.
