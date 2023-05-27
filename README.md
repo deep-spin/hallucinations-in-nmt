@@ -17,7 +17,9 @@ The guidelines for annotation that were used by the translators are available in
 We also make available the DE-EN model that was used to produce the translations and the training data (from WMT18) that was used to train it. Those resources are made available [here](https://www.mediafire.com/file/mp5oim9hqgcy8fb/checkpoint_best.tar.xz/file) and [here](https://www.mediafire.com/file/jfl7y6yu7jqwwhv/wmt18_de-en.tar.xz/file), respectively. We also provide the `sentencepiece` models that were used to preprocess the data (in `./sentencepiece_models/`), so you can run the model on additional data.
 
 ### How to use our model?
-Our model is built on top of [*Fairseq*](https://github.com/facebookresearch/fairseq). We refer to their [repo folder on translation](https://github.com/facebookresearch/fairseq/blob/main/examples/translation) for additional information on how to preprocess, train and generate translations.
+Our model is built on top of [*Fairseq*](https://github.com/facebookresearch/fairseq). We refer to their [repo folder on translation](https://github.com/facebookresearch/fairseq/blob/main/examples/translation) for additional information on how to preprocess, train and generate translations. 
+
+NOTE: To obtain model-based statistics that are faithful to the dataset we release, we advise to force decode the translations in the dataset using `fairseq-generate` with `score-reference` activated.
 
 ### How to run MC-dropout on Fairseq models?
 Look [here](https://github.com/facebookresearch/fairseq/tree/main/examples/unsupervised_quality_estimation) to find instructions on how to run MC-dropout inference with Fairseq models. You will also find instructions on how to compute similarity between multiple hypotheses with METEOR, which you can use to compute `MC-DSim`.
@@ -32,6 +34,20 @@ Look [here](https://github.com/Unbabel/COMET) to find detailed instructions on h
 Look [here](https://github.com/mjpost/sacrebleu) to find detailed instructions on how to score translations using CHRF2.
 
 ## Implementation of the detectors
-We have mentioned how to obtain scores with `MC-DSim`, `Seq-Logprob`, `COMET`, `COMET-QE` and `CHRF2`. To obtain scores with `TokHal-Model`, we refer to the [original implementation](https://github.com/violet-zct/fairseq-detect-hallucination). We will release the implementation of `TNG`, `RT` and attention-based detectors soon.
+We have mentioned how to obtain scores with `MC-DSim`, `Seq-Logprob`, `COMET`, `COMET-QE` and `CHRF2`. To obtain scores with `TokHal-Model`, we refer to the [original implementation](https://github.com/violet-zct/fairseq-detect-hallucination). 
 
 ## Citation
+```bibtex
+@inproceedings{guerreiro-etal-2023-looking,
+    title = "Looking for a Needle in a Haystack: A Comprehensive Study of Hallucinations in Neural Machine Translation",
+    author = "Guerreiro, Nuno M.  and
+      Voita, Elena  and
+      Martins, Andr{\'e}",
+    booktitle = "Proceedings of the 17th Conference of the European Chapter of the Association for Computational Linguistics",
+    month = may,
+    year = "2023",
+    address = "Dubrovnik, Croatia",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.eacl-main.75",
+}
+```
